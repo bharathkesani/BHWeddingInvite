@@ -114,10 +114,11 @@
 
 <body class="bg-linen text-charcoalBrown font-sans antialiased selection:bg-antiqueGold selection:text-white">
 
-  <!-- Direct Google Drive Audio Element (Infinite Repeat Loop) -->
-  <audio id="bgMusic" preload="auto" loop>
-    <source src="https://docs.google.com/uc?export=download&id=1HpqsWl4uax5MuVLCNQE969JYy7z2NYnS" type="audio/mpeg">
-    <source src="wedding-song.mp3" type="audio/mpeg">
+  <!-- Native HTML5 Audio Element referencing renamed local repo file -->
+  <audio id="bgMusic" preload="auto" loop playsinline>
+    <source src="seetha-kalyanam.mp3" type="audio/mpeg">
+    <!-- Secondary fallback just in case -->
+    <source src="./seetha-kalyanam.mp3" type="audio/mpeg">
   </audio>
 
   <!-- Top Floating Controls -->
@@ -648,25 +649,23 @@
   <!-- JAVASCRIPT -->
   <script>
     const bgMusic = document.getElementById('bgMusic');
-    let isMusicPlaying = false;
+    const audioToggleBtn = document.getElementById('audioToggleBtn');
+    const audioLabel = document.getElementById('audioLabel');
+    const audioIcon = document.getElementById('audioIcon');
 
     function toggleAudio() {
-      const label = document.getElementById('audioLabel');
-      const icon = document.getElementById('audioIcon');
-
       if (bgMusic.paused) {
         bgMusic.play().then(() => {
-          isMusicPlaying = true;
-          label.textContent = 'Pause';
-          icon.textContent = '⏸️';
+          audioLabel.textContent = 'Pause';
+          audioIcon.textContent = '⏸️';
         }).catch(err => {
-          console.log("Audio play blocked:", err);
+          console.warn("Audio play prevented:", err);
+          alert("To enable music, please rename the song file in your repository to 'seetha-kalyanam.mp3' and refresh.");
         });
       } else {
         bgMusic.pause();
-        isMusicPlaying = false;
-        label.textContent = 'Music';
-        icon.textContent = '🎵';
+        audioLabel.textContent = 'Music';
+        audioIcon.textContent = '🎵';
       }
     }
 
@@ -680,9 +679,18 @@
       leftDoor.classList.add('open-left');
       rightDoor.classList.add('open-right');
 
-      // Trigger background music on the guest's explicit tap gesture
+      // GUEST INTERACTION CONFIRMED:
+      // Start background music immediately. This is the user gesture that 
+      // allows the browser to legally unblock media playback.
       if (bgMusic.paused) {
-        toggleAudio();
+        // Double-check the renamed local repo file can load
+        bgMusic.load(); 
+        bgMusic.play().then(() => {
+          audioLabel.textContent = 'Pause';
+          audioIcon.textContent = '⏸️';
+        }).catch(e => {
+          console.log("Audio file renamed or placed check needed:", e);
+        });
       }
 
       setTimeout(() => {
