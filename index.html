@@ -10,6 +10,7 @@
   <meta property="og:title" content="We're Getting Married! | Hemalatha & Bharath Kumar">
   <meta property="og:description" content="We warmly invite you to celebrate our wedding. Tap to view our story, schedule, and venue details.">
   <meta property="og:image" content="https://lh3.googleusercontent.com/d/1wOVlt5WvDpnC7QGpz3UV03NSELdB7Igh">
+  <meta property="og:url" content="https://bharathkesani.github.io/BHWeddingInvite/">
 
   <!-- Tailwind CSS & Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -114,10 +115,10 @@
 
 <body class="bg-linen text-charcoalBrown font-sans antialiased selection:bg-antiqueGold selection:text-white">
 
-  <!-- Native HTML5 Audio Element referencing renamed local repo file -->
+  <!-- Native HTML5 Audio Element (Plays on loop from 0:24) -->
   <audio id="bgMusic" preload="auto" loop playsinline>
     <source src="seetha-kalyanam.mp3" type="audio/mpeg">
-    <!-- Secondary fallback just in case -->
+    <source src="Seetha%20Kalyanam%20-%20SenSongsMp3.Co.mp3" type="audio/mpeg">
     <source src="./seetha-kalyanam.mp3" type="audio/mpeg">
   </audio>
 
@@ -649,27 +650,65 @@
   <!-- JAVASCRIPT -->
   <script>
     const bgMusic = document.getElementById('bgMusic');
-    const audioToggleBtn = document.getElementById('audioToggleBtn');
     const audioLabel = document.getElementById('audioLabel');
     const audioIcon = document.getElementById('audioIcon');
+    let hasStarted = false;
 
+    // Start playback strictly from 0:24
+    function playFromTimestamp() {
+      if (!bgMusic) return;
+
+      if (!hasStarted) {
+        try {
+          bgMusic.currentTime = 24;
+        } catch (e) {
+          // If metadata is still buffering, set time on canplay
+          bgMusic.addEventListener('canplay', () => {
+            bgMusic.currentTime = 24;
+          }, { once: true });
+        }
+        hasStarted = true;
+      }
+
+      bgMusic.play().then(() => {
+        if (audioLabel) audioLabel.textContent = 'Pause';
+        if (audioIcon) audioIcon.textContent = '⏸️';
+      }).catch(err => {
+        console.log("Autoplay on load restricted by browser policy. Awaiting first touch:", err);
+      });
+    }
+
+    // 1. Attempt autoplay on load
+    window.addEventListener('DOMContentLoaded', () => {
+      playFromTimestamp();
+    });
+
+    // 2. Fallback: Any first touch/scroll/click initiates playback from 0:24
+    function handleFirstUserInteraction() {
+      if (bgMusic.paused) {
+        playFromTimestamp();
+      }
+      ['click', 'touchstart', 'scroll'].forEach(evt => 
+        document.removeEventListener(evt, handleFirstUserInteraction)
+      );
+    }
+
+    ['click', 'touchstart', 'scroll'].forEach(evt => 
+      document.addEventListener(evt, handleFirstUserInteraction, { once: true, passive: true })
+    );
+
+    // 3. Floating Button Audio Toggle
     function toggleAudio() {
       if (bgMusic.paused) {
-        bgMusic.play().then(() => {
-          audioLabel.textContent = 'Pause';
-          audioIcon.textContent = '⏸️';
-        }).catch(err => {
-          console.warn("Audio play prevented:", err);
-          alert("To enable music, please rename the song file in your repository to 'seetha-kalyanam.mp3' and refresh.");
-        });
+        playFromTimestamp();
       } else {
         bgMusic.pause();
-        audioLabel.textContent = 'Music';
-        audioIcon.textContent = '🎵';
+        if (audioLabel) audioLabel.textContent = 'Music';
+        if (audioIcon) audioIcon.textContent = '🎵';
       }
     }
 
-    // 3D Gatefold Door Unfolding Sequence
+    // 4. 3D Gatefold Door Unfolding Sequence
     function unfoldGatefoldInvitation() {
       const leftDoor = document.getElementById('leftDoor');
       const rightDoor = document.getElementById('rightDoor');
@@ -679,18 +718,9 @@
       leftDoor.classList.add('open-left');
       rightDoor.classList.add('open-right');
 
-      // GUEST INTERACTION CONFIRMED:
-      // Start background music immediately. This is the user gesture that 
-      // allows the browser to legally unblock media playback.
+      // Guarantee playback from 0:24 if not running already
       if (bgMusic.paused) {
-        // Double-check the renamed local repo file can load
-        bgMusic.load(); 
-        bgMusic.play().then(() => {
-          audioLabel.textContent = 'Pause';
-          audioIcon.textContent = '⏸️';
-        }).catch(e => {
-          console.log("Audio file renamed or placed check needed:", e);
-        });
+        playFromTimestamp();
       }
 
       setTimeout(() => {
