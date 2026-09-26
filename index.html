@@ -46,15 +46,20 @@
   </script>
 
   <style>
-    /* Full height discrete screen snap on mobile devices */
     html, body {
       height: 100%;
-      overflow-x: hidden;
+      overflow: hidden; /* Initial hard lock */
     }
 
-    .snap-container {
+    /* Container lock: unlocked via JS after opening */
+    .snap-container-locked {
+      overflow: hidden !important;
+      height: 100dvh;
+    }
+
+    .snap-container-unlocked {
       scroll-snap-type: y mandatory;
-      overflow-y: scroll;
+      overflow-y: scroll !important;
       height: 100dvh;
       -webkit-overflow-scrolling: touch;
     }
@@ -103,19 +108,36 @@
       opacity: 0.15;
     }
 
+    /* Attention-grabbing button animations */
     @keyframes pulseGlow {
       0%, 100% { opacity: 0.35; transform: scale(1); }
-      50% { opacity: 0.7; transform: scale(1.05); }
+      50% { opacity: 0.75; transform: scale(1.1); }
     }
     .animate-glow {
-      animation: pulseGlow 4s ease-in-out infinite;
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes subtleBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+    .animate-bounce-subtle {
+      animation: subtleBounce 2s ease-in-out infinite;
+    }
+
+    @keyframes radarWave {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+    .animate-radar {
+      animation: radarWave 2.2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
     }
   </style>
 </head>
 
 <body class="bg-linen text-charcoalBrown font-sans antialiased selection:bg-antiqueGold selection:text-white">
 
-  <!-- Native HTML5 Audio Element (Plays on loop from 0:24) -->
+  <!-- Native HTML5 Audio Element (Looping, timestamp managed via JS) -->
   <audio id="bgMusic" preload="auto" loop playsinline>
     <source src="seetha-kalyanam.mp3" type="audio/mpeg">
     <source src="Seetha%20Kalyanam%20-%20SenSongsMp3.Co.mp3" type="audio/mpeg">
@@ -130,8 +152,8 @@
     </button>
   </div>
 
-  <!-- SNAP CONTAINER WRAPPER -->
-  <div id="scrollContainer" class="snap-container">
+  <!-- SNAP CONTAINER WRAPPER (Initially Locked) -->
+  <div id="scrollContainer" class="snap-container-locked">
 
     <!-- ==================== SCREEN 1: 3D GATEFOLD INVITATION COVER ==================== -->
     <section id="coverSection" class="snap-page perspective-container relative w-full h-full flex items-center justify-center bg-[#E5D7C5] overflow-hidden">
@@ -215,7 +237,7 @@
 
           <div class="space-y-1">
             <span class="text-[7.5px] uppercase font-serifDisplay tracking-[0.28em] text-antiqueGold font-bold block">Join Us</span>
-            <h2 class="font-serifDisplay text-base sm:text-2xl font-bold tracking-wider text-templeMaroon leading-snug">
+            <h2 class="font-serifProse text-base sm:text-2xl font-bold tracking-wider text-templeMaroon leading-snug">
               TO WITNESS<br>THE JOURNEY
             </h2>
             <p class="font-serifProse italic text-[10.5px] sm:text-[12px] text-charcoalBrown/75 leading-relaxed pt-0.5">
@@ -230,14 +252,19 @@
         </div>
       </div>
 
-      <!-- CENTER GOLD EMBLEM & "OPEN INVITATION" SEAL -->
+      <!-- CENTER GOLD EMBLEM & "OPEN INVITATION" SEAL (With Radar Click-Assist) -->
       <div id="centerSeal" class="absolute z-30 flex flex-col items-center justify-center transition-all duration-700 pointer-events-auto">
         <div class="relative flex flex-col items-center">
-          <div class="absolute -inset-2.5 rounded-full bg-antiqueGold/25 animate-glow filter blur-md"></div>
           
+          <!-- Animated Radar Wave to catch eye -->
+          <div class="absolute inset-0 rounded-full border-2 border-antiqueGold animate-radar pointer-events-none"></div>
+          <!-- Warm Amber Glow Halo -->
+          <div class="absolute -inset-3 rounded-full bg-antiqueGold/30 animate-glow filter blur-md pointer-events-none"></div>
+          
+          <!-- Interactive Open Seal Button with Subtle Bounce -->
           <button 
             onclick="unfoldGatefoldInvitation()" 
-            class="group relative w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F5ECE0] border-2 border-antiqueGold/85 shadow-[0_10px_35px_rgba(90,12,19,0.22)] flex flex-col items-center justify-center p-2.5 text-center active:scale-95 transition-all duration-300"
+            class="group relative w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F5ECE0] border-2 border-antiqueGold/90 shadow-[0_10px_35px_rgba(90,12,19,0.25)] flex flex-col items-center justify-center p-2.5 text-center active:scale-95 transition-all duration-300 animate-bounce-subtle cursor-pointer"
           >
             <!-- Artistic Line-Art Ganapathy -->
             <div class="w-10 h-10 sm:w-11 sm:h-11 mb-1 flex items-center justify-center">
@@ -260,11 +287,16 @@
             </span>
 
             <div class="mt-1 flex items-center gap-1">
-              <span class="text-[7px] text-antiqueGold">✦</span>
-              <span class="text-[7px] font-serifProse italic text-charcoalBrown/60">Tap Seal</span>
-              <span class="text-[7px] text-antiqueGold">✦</span>
+              <span class="text-[7px] text-antiqueGold animate-pulse">✦</span>
+              <span class="text-[7.5px] font-serifProse italic font-semibold text-terracotta">Tap To Enter</span>
+              <span class="text-[7px] text-antiqueGold animate-pulse">✦</span>
             </div>
           </button>
+
+          <!-- Little Guidance Pointer below button -->
+          <div class="absolute -bottom-6 flex items-center gap-1 text-[8px] uppercase tracking-widest text-antiqueGold font-bold select-none pointer-events-none">
+            <span>↓ TAP SEAL ↓</span>
+          </div>
         </div>
       </div>
 
@@ -652,9 +684,12 @@
     const bgMusic = document.getElementById('bgMusic');
     const audioLabel = document.getElementById('audioLabel');
     const audioIcon = document.getElementById('audioIcon');
+    const scrollContainer = document.getElementById('scrollContainer');
+    
     let hasStarted = false;
+    let isUserInitiatedPlay = false; // Tracks if user has unlocked audio
 
-    // Start playback strictly from 0:24
+    // Start audio specifically at 0:24
     function playFromTimestamp() {
       if (!bgMusic) return;
 
@@ -662,7 +697,6 @@
         try {
           bgMusic.currentTime = 24;
         } catch (e) {
-          // If metadata is still buffering, set time on canplay
           bgMusic.addEventListener('canplay', () => {
             bgMusic.currentTime = 24;
           }, { once: true });
@@ -671,58 +705,76 @@
       }
 
       bgMusic.play().then(() => {
+        isUserInitiatedPlay = true;
         if (audioLabel) audioLabel.textContent = 'Pause';
         if (audioIcon) audioIcon.textContent = '⏸️';
       }).catch(err => {
-        console.log("Autoplay on load restricted by browser policy. Awaiting first touch:", err);
+        console.log("Audio waiting for user gesture:", err);
       });
     }
 
-    // 1. Attempt autoplay on load
-    window.addEventListener('DOMContentLoaded', () => {
-      playFromTimestamp();
+    // 1. TAB VISIBILITY SYNC: Pause when tab is inactive, resume when active
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        // Tab minimized, user switched apps or opened another tab
+        if (!bgMusic.paused) {
+          bgMusic.pause();
+        }
+      } else {
+        // User came back to this tab
+        if (isUserInitiatedPlay) {
+          bgMusic.play().then(() => {
+            if (audioLabel) audioLabel.textContent = 'Pause';
+            if (audioIcon) audioIcon.textContent = '⏸️';
+          }).catch(err => console.log("Resume blocked:", err));
+        }
+      }
     });
 
-    // 2. Fallback: Any first touch/scroll/click initiates playback from 0:24
-    function handleFirstUserInteraction() {
-      if (bgMusic.paused) {
-        playFromTimestamp();
+    // Window focus/blur backup (covers older mobile WebViews)
+    window.addEventListener('blur', () => {
+      if (!bgMusic.paused) {
+        bgMusic.pause();
       }
-      ['click', 'touchstart', 'scroll'].forEach(evt => 
-        document.removeEventListener(evt, handleFirstUserInteraction)
-      );
-    }
+    });
+    window.addEventListener('focus', () => {
+      if (isUserInitiatedPlay && bgMusic.paused) {
+        bgMusic.play().catch(() => {});
+      }
+    });
 
-    ['click', 'touchstart', 'scroll'].forEach(evt => 
-      document.addEventListener(evt, handleFirstUserInteraction, { once: true, passive: true })
-    );
-
-    // 3. Floating Button Audio Toggle
+    // 2. Floating Button Audio Toggle
     function toggleAudio() {
       if (bgMusic.paused) {
         playFromTimestamp();
       } else {
         bgMusic.pause();
+        isUserInitiatedPlay = false; // User manually paused it
         if (audioLabel) audioLabel.textContent = 'Music';
         if (audioIcon) audioIcon.textContent = '🎵';
       }
     }
 
-    // 4. 3D Gatefold Door Unfolding Sequence
+    // 3. UNLOCK GATEFOLD & UNLOCK SCROLL
     function unfoldGatefoldInvitation() {
       const leftDoor = document.getElementById('leftDoor');
       const rightDoor = document.getElementById('rightDoor');
       const seal = document.getElementById('centerSeal');
 
+      // Hide seal and open doors
       seal.classList.add('scale-75', 'opacity-0', 'pointer-events-none');
       leftDoor.classList.add('open-left');
       rightDoor.classList.add('open-right');
 
-      // Guarantee playback from 0:24 if not running already
-      if (bgMusic.paused) {
-        playFromTimestamp();
-      }
+      // UNLOCK SCROLL CONTAINER
+      scrollContainer.classList.remove('snap-container-locked');
+      scrollContainer.classList.add('snap-container-unlocked');
+      document.body.style.overflow = 'auto';
 
+      // Start music at 0:24
+      playFromTimestamp();
+
+      // Smoothly navigate to the Groom's screen
       setTimeout(() => {
         document.getElementById('groomPage').scrollIntoView({ behavior: 'smooth' });
         showerAkshatai();
