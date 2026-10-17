@@ -48,10 +48,9 @@
   <style>
     html, body {
       height: 100%;
-      overflow: hidden; /* Initial hard lock */
+      overflow: hidden;
     }
 
-    /* Container lock: unlocked via JS after opening */
     .snap-container-locked {
       overflow: hidden !important;
       height: 100dvh;
@@ -70,19 +69,16 @@
       min-height: 100dvh;
     }
 
-    /* Soft feathered blend for portraits */
-    .organic-photo-blend {
-      mask-image: radial-gradient(circle at 50% 45%, rgba(0,0,0,1) 54%, rgba(0,0,0,0) 80%);
-      -webkit-mask-image: radial-gradient(circle at 50% 45%, rgba(0,0,0,1) 54%, rgba(0,0,0,0) 80%);
+    .feather-portrait-blend {
+      mask-image: radial-gradient(ellipse 65% 72% at 50% 46%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.85) 58%, rgba(0,0,0,0) 86%);
+      -webkit-mask-image: radial-gradient(ellipse 65% 72% at 50% 46%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.85) 58%, rgba(0,0,0,0) 86%);
     }
 
-    /* Seamless vignette blending for custom sticker images */
     .sticker-blend {
       mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 82%);
       -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 82%);
     }
 
-    /* 3D Gatefold Door Setup */
     .perspective-container {
       perspective: 1400px;
       perspective-origin: center;
@@ -108,7 +104,6 @@
       opacity: 0.15;
     }
 
-    /* Attention-grabbing button animations */
     @keyframes pulseGlow {
       0%, 100% { opacity: 0.35; transform: scale(1); }
       50% { opacity: 0.75; transform: scale(1.1); }
@@ -137,7 +132,7 @@
 
 <body class="bg-linen text-charcoalBrown font-sans antialiased selection:bg-antiqueGold selection:text-white">
 
-  <!-- Native HTML5 Audio Element (Looping, timestamp managed via JS) -->
+  <!-- Native HTML5 Audio Element -->
   <audio id="bgMusic" preload="auto" loop playsinline>
     <source src="seetha-kalyanam.mp3" type="audio/mpeg">
     <source src="Seetha%20Kalyanam%20-%20SenSongsMp3.Co.mp3" type="audio/mpeg">
@@ -152,19 +147,18 @@
     </button>
   </div>
 
-  <!-- SNAP CONTAINER WRAPPER (Initially Locked) -->
+  <!-- SNAP CONTAINER WRAPPER -->
   <div id="scrollContainer" class="snap-container-locked">
 
     <!-- ==================== SCREEN 1: 3D GATEFOLD INVITATION COVER ==================== -->
     <section id="coverSection" class="snap-page perspective-container relative w-full h-full flex items-center justify-center bg-[#E5D7C5] overflow-hidden">
       
-      <!-- Sub-sheet behind the opening doors -->
       <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-gradient-to-b from-[#FAF7F2] to-[#F0E6D8] z-0">
         <span class="text-[10px] uppercase font-serifDisplay tracking-[0.4em] text-antiqueGold font-bold mb-2">Welcome</span>
         <h2 class="font-serifProse italic text-3xl sm:text-4xl text-templeMaroon">Unfolding Our Story</h2>
       </div>
 
-      <!-- LEFT FOLD DOOR: CALL FOR CELEBRATION WITH 'B' MONOGRAM -->
+      <!-- LEFT FOLD DOOR -->
       <div id="leftDoor" class="door-left absolute top-0 left-0 w-1/2 h-full bg-gradient-to-br from-[#FAF7F2] via-[#F4ECE1] to-[#E9DDD0] border-r border-antiqueGold/40 shadow-2xl z-20 flex flex-col justify-between p-4 sm:p-7 overflow-hidden">
         
         <div class="absolute -top-12 -left-12 w-60 h-60 opacity-20 pointer-events-none text-forestSage">
@@ -174,7 +168,6 @@
         </div>
         <div class="absolute inset-3 border-l-2 border-y-2 border-antiqueGold/35 rounded-l-3xl pointer-events-none"></div>
 
-        <!-- Top Left Glyph -->
         <div class="pt-4 pl-2">
           <div class="flex items-center gap-1.5">
             <div class="w-1.5 h-1.5 rounded-full bg-antiqueGold"></div>
@@ -182,9 +175,7 @@
           </div>
         </div>
 
-        <!-- Symmetrical Left Content Lockup -->
         <div class="my-auto pr-14 sm:pr-20 text-right space-y-2">
-          <!-- Cursive Monogram 'B' -->
           <div class="flex items-center justify-end gap-2 leading-none pb-1">
             <div class="w-8 h-[1px] bg-antiqueGold/45"></div>
             <span class="font-scriptMonogram text-5xl sm:text-6xl text-templeMaroon select-none drop-shadow-sm pr-1">B</span>
@@ -202,13 +193,12 @@
           </div>
         </div>
 
-        <!-- Bottom Ornament -->
         <div class="pb-4 pl-2">
           <div class="w-8 h-[1px] bg-antiqueGold/50"></div>
         </div>
       </div>
 
-      <!-- RIGHT FOLD DOOR: WITNESS THE JOURNEY WITH 'H' MONOGRAM -->
+      <!-- RIGHT FOLD DOOR -->
       <div id="rightDoor" class="door-right absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-[#FAF7F2] via-[#F4ECE1] to-[#E9DDD0] border-l border-antiqueGold/40 shadow-2xl z-20 flex flex-col justify-between p-4 sm:p-7 overflow-hidden">
         
         <div class="absolute -bottom-16 -right-16 w-60 h-60 opacity-20 pointer-events-none text-antiqueGold">
@@ -218,7 +208,6 @@
         </div>
         <div class="absolute inset-3 border-r-2 border-y-2 border-antiqueGold/35 rounded-r-3xl pointer-events-none"></div>
 
-        <!-- Top Right Glyph -->
         <div class="pt-4 pr-2 text-right">
           <div class="flex items-center justify-end gap-1.5">
             <span class="text-[8px] uppercase font-serifDisplay tracking-[0.35em] text-antiqueGold font-semibold">Mangalam</span>
@@ -226,9 +215,7 @@
           </div>
         </div>
 
-        <!-- Symmetrical Right Content Lockup -->
         <div class="my-auto pl-14 sm:pl-20 text-left space-y-2">
-          <!-- Cursive Monogram 'H' -->
           <div class="flex items-center justify-start gap-2 leading-none pb-1">
             <div class="w-1.5 h-1.5 rounded-full bg-antiqueGold/60"></div>
             <span class="font-scriptMonogram text-5xl sm:text-6xl text-templeMaroon select-none drop-shadow-sm pl-1">H</span>
@@ -246,27 +233,22 @@
           </div>
         </div>
 
-        <!-- Bottom Ornament -->
         <div class="pb-4 pr-2 text-right">
           <div class="w-8 h-[1px] bg-antiqueGold/50 ml-auto"></div>
         </div>
       </div>
 
-      <!-- CENTER GOLD EMBLEM & "OPEN INVITATION" SEAL (With Radar Click-Assist) -->
+      <!-- CENTER GOLD SEAL -->
       <div id="centerSeal" class="absolute z-30 flex flex-col items-center justify-center transition-all duration-700 pointer-events-auto">
         <div class="relative flex flex-col items-center">
           
-          <!-- Animated Radar Wave to catch eye -->
           <div class="absolute inset-0 rounded-full border-2 border-antiqueGold animate-radar pointer-events-none"></div>
-          <!-- Warm Amber Glow Halo -->
           <div class="absolute -inset-3 rounded-full bg-antiqueGold/30 animate-glow filter blur-md pointer-events-none"></div>
           
-          <!-- Interactive Open Seal Button with Subtle Bounce -->
           <button 
             onclick="unfoldGatefoldInvitation()" 
             class="group relative w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F5ECE0] border-2 border-antiqueGold/90 shadow-[0_10px_35px_rgba(90,12,19,0.25)] flex flex-col items-center justify-center p-2.5 text-center active:scale-95 transition-all duration-300 animate-bounce-subtle cursor-pointer"
           >
-            <!-- Artistic Line-Art Ganapathy -->
             <div class="w-10 h-10 sm:w-11 sm:h-11 mb-1 flex items-center justify-center">
               <svg viewBox="0 0 100 100" fill="none" class="w-full h-full stroke-terracotta" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M 50 14 Q 53 8 56 14 Q 62 26 62 38" />
@@ -281,7 +263,6 @@
               </svg>
             </div>
 
-            <!-- Button Label -->
             <span class="text-[8.5px] font-serifDisplay uppercase tracking-[0.2em] text-templeMaroon font-bold leading-tight">
               Open Our<br>Invitation
             </span>
@@ -293,7 +274,6 @@
             </div>
           </button>
 
-          <!-- Little Guidance Pointer below button -->
           <div class="absolute -bottom-6 flex items-center gap-1 text-[8px] uppercase tracking-widest text-antiqueGold font-bold select-none pointer-events-none">
             <span>↓ TAP SEAL ↓</span>
           </div>
@@ -303,21 +283,21 @@
     </section>
 
     <!-- ==================== SCREEN 2: THE GROOM ==================== -->
-    <section id="groomPage" class="snap-page relative w-full h-full flex flex-col items-center justify-center p-5 sm:p-6 bg-linen text-center gap-3 sm:gap-4 overflow-hidden">
+    <section id="groomPage" class="snap-page relative w-full h-full flex flex-col items-center justify-center p-5 sm:p-6 bg-linen text-center gap-2 sm:gap-3 overflow-hidden">
       
       <div class="space-y-0.5">
         <span class="text-[9px] uppercase font-serifDisplay tracking-[0.35em] text-antiqueGold font-bold">Introducing</span>
         <h2 class="font-serifProse italic text-3xl sm:text-4xl text-terracotta font-normal leading-none">The Groom</h2>
       </div>
 
-      <div class="relative w-64 h-72 sm:w-72 sm:h-80 flex items-center justify-center shrink-0">
-        <div class="absolute inset-2 rounded-full bg-gradient-to-tr from-sandalwood to-antiqueGold/25 filter blur-xl opacity-75"></div>
+      <div class="relative w-full max-w-[290px] sm:max-w-xs flex items-center justify-center shrink-0">
+        <div class="absolute inset-4 rounded-full bg-gradient-to-tr from-sandalwood/70 via-antiqueGold/20 to-transparent filter blur-2xl opacity-70"></div>
         <img 
-          src="https://lh3.googleusercontent.com/d/1f9BhYdC79ZJJJmHc4jN_ALuw0zXFhkCC" 
+          src="https://lh3.googleusercontent.com/d/15pA77BVUJQ9TO7Ym22B8v_BHDVd6KTA_" 
           alt="Bharath Kumar Kesani"
           referrerpolicy="no-referrer"
-          onerror="this.onerror=null; this.src='https://drive.google.com/uc?export=view&id=1f9BhYdC79ZJJJmHc4jN_ALuw0zXFhkCC';"
-          class="organic-photo-blend w-full h-full object-cover object-top filter contrast-[1.02] brightness-[1.02]"
+          onerror="this.onerror=null; this.src='https://drive.google.com/uc?export=view&id=15pA77BVUJQ9TO7Ym22B8v_BHDVd6KTA_';"
+          class="feather-portrait-blend w-full max-h-[38dvh] sm:max-h-[42dvh] object-contain object-center filter contrast-[1.02] brightness-[1.01]"
         />
       </div>
 
@@ -326,8 +306,8 @@
           <h3 class="font-serifDisplay text-2xl sm:text-3xl font-bold tracking-wider text-templeMaroon">
             BHARATH KUMAR KESANI <span class="text-sm font-semibold text-antiqueGold">MS</span>
           </h3>
-          <p class="font-serifProse text-sm sm:text-base italic text-[#5C4C4C] pt-0.5">
-            Son of <span class="font-medium text-charcoalBrown">Mr. Moorthy Kesani</span> & <span class="font-medium text-charcoalBrown">Mrs. Lalitha Kesani</span>
+          <p class="font-serifProse text-base sm:text-lg italic text-[#261E1E] font-medium pt-0.5">
+            Son of <span class="font-bold text-[#1A1414]">Mr. Moorthy Kesani</span> &amp; <span class="font-bold text-[#1A1414]">Mrs. Lalitha Kesani</span>
           </p>
         </div>
 
@@ -335,7 +315,7 @@
           <div class="relative p-3.5 sm:p-4 rounded-2xl bg-[#FFFDF9]/90 border border-antiqueGold/35 shadow-sm text-center">
             <span class="absolute -top-3 left-4 font-serifProse text-3xl text-antiqueGold leading-none select-none">“</span>
             <p class="font-serifProse italic text-base sm:text-lg text-[#3E3030] font-normal leading-relaxed">
-              Marriage is about walking together as equals—anchored in deep friendship, growing side-by-side, and celebrating every small moment with laughter and purpose.
+              Marriage is about walking together as equals - anchored in deep friendship, growing side-by-side, and celebrating every small moment with laughter and purpose.
             </p>
             <span class="absolute -bottom-4 right-4 font-serifProse text-3xl text-antiqueGold leading-none select-none">”</span>
           </div>
@@ -348,21 +328,21 @@
     </section>
 
     <!-- ==================== SCREEN 3: THE BRIDE ==================== -->
-    <section id="bridePage" class="snap-page relative w-full h-full flex flex-col items-center justify-center p-5 sm:p-6 bg-[#FAF6F0] text-center gap-3 sm:gap-4 border-t border-antiqueGold/15 overflow-hidden">
+    <section id="bridePage" class="snap-page relative w-full h-full flex flex-col items-center justify-center p-5 sm:p-6 bg-[#FAF6F0] text-center gap-2 sm:gap-3 border-t border-antiqueGold/15 overflow-hidden">
       
       <div class="space-y-0.5">
         <span class="text-[9px] uppercase font-serifDisplay tracking-[0.35em] text-antiqueGold font-bold">Introducing</span>
         <h2 class="font-serifProse italic text-3xl sm:text-4xl text-terracotta font-normal leading-none">The Bride</h2>
       </div>
 
-      <div class="relative w-64 h-72 sm:w-72 sm:h-80 flex items-center justify-center shrink-0">
-        <div class="absolute inset-2 rounded-full bg-gradient-to-tr from-sandalwood to-antiqueGold/25 filter blur-xl opacity-75"></div>
+      <div class="relative w-full max-w-[290px] sm:max-w-xs flex items-center justify-center shrink-0">
+        <div class="absolute inset-4 rounded-full bg-gradient-to-tr from-sandalwood/70 via-antiqueGold/20 to-transparent filter blur-2xl opacity-70"></div>
         <img 
           src="https://lh3.googleusercontent.com/d/13Lw0WUQEMkoFYsOnCB0XE1VYky8hGBxe" 
           alt="Hemalatha Vemula"
           referrerpolicy="no-referrer"
           onerror="this.onerror=null; this.src='https://drive.google.com/uc?export=view&id=13Lw0WUQEMkoFYsOnCB0XE1VYky8hGBxe';"
-          class="organic-photo-blend w-full h-full object-cover object-top filter contrast-[1.02] brightness-[1.02]"
+          class="feather-portrait-blend w-full max-h-[38dvh] sm:max-h-[42dvh] object-contain object-center filter contrast-[1.02] brightness-[1.01]"
         />
       </div>
 
@@ -371,8 +351,8 @@
           <h3 class="font-serifDisplay text-2xl sm:text-3xl font-bold tracking-wider text-templeMaroon">
             HEMALATHA VEMULA <span class="text-sm font-semibold text-antiqueGold">BE</span>
           </h3>
-          <p class="font-serifProse text-sm sm:text-base italic text-[#5C4C4C] pt-0.5">
-            Daughter of <span class="font-medium text-charcoalBrown">Mr. Chandrasekar Vemula</span> & <span class="font-medium text-charcoalBrown">Mrs. Bhuvana Vemula</span>
+          <p class="font-serifProse text-base sm:text-lg italic text-[#261E1E] font-medium pt-0.5">
+            Daughter of <span class="font-bold text-[#1A1414]">Mr. Chandrasekar Vemula</span> &amp; <span class="font-bold text-[#1A1414]">Mrs. Bhuvana Vemula</span>
           </p>
         </div>
 
@@ -380,7 +360,7 @@
           <div class="relative p-3.5 sm:p-4 rounded-2xl bg-[#FFFDF9]/90 border border-antiqueGold/35 shadow-sm text-center">
             <span class="absolute -top-3 left-4 font-serifProse text-3xl text-antiqueGold leading-none select-none">“</span>
             <p class="font-serifProse italic text-base sm:text-lg text-[#3E3030] font-normal leading-relaxed">
-              Marriage is finding home in another soul—a sacred space of trust, mutual respect, shared dreams, and embracing life’s beautiful adventure hand-in-hand.
+              Marriage is finding home in another soul - a sacred space of trust, mutual respect, shared dreams, and embracing life’s beautiful adventure hand-in-hand.
             </p>
             <span class="absolute -bottom-4 right-4 font-serifProse text-3xl text-antiqueGold leading-none select-none">”</span>
           </div>
@@ -470,19 +450,77 @@
       </div>
     </section>
 
-    <!-- ==================== SCREEN 5: AGENDA WITH SMART CALENDAR DETECTION ==================== -->
-    <section id="agendaPage" class="snap-page relative w-full flex flex-col justify-between p-5 sm:p-6 py-6 sm:py-8 bg-[#FAF6F0] border-t border-antiqueGold/15">
+    <!-- ==================== SCREEN 5: AGENDA WITH HALDI + ALL EVENTS ==================== -->
+    <section id="agendaPage" class="snap-page relative w-full flex flex-col justify-between p-4 sm:p-6 py-5 sm:py-7 bg-[#FAF6F0] border-t border-antiqueGold/15">
       
       <div class="text-center space-y-0.5">
         <span class="text-[9px] font-serifDisplay uppercase tracking-[0.3em] text-antiqueGold font-bold">Event Schedule</span>
         <h3 class="font-serifProse italic text-2xl text-templeMaroon font-normal">Our Celebrations</h3>
       </div>
 
-      <div class="space-y-2.5 max-w-sm mx-auto w-full my-auto">
+      <!-- Events List -->
+      <div class="space-y-2 max-w-sm mx-auto w-full my-auto overflow-y-auto max-h-[76vh] pr-0.5">
         
-        <!-- 1. NALUGU: CHARIOT STICKER -->
-        <div class="bg-white/95 p-2.5 sm:p-3 rounded-2xl border border-antiqueGold/30 flex items-center gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.03)]">
-          <div class="relative w-14 h-14 shrink-0 rounded-xl bg-gradient-to-br from-warmSand/80 via-goldPale/50 to-white flex items-center justify-center p-0.5 border border-antiqueGold/30 overflow-hidden">
+        <!-- 1. HALDI -->
+        <div class="bg-gradient-to-r from-amber-50/90 via-white to-yellow-50/70 p-2.5 rounded-2xl border border-amber-300/80 flex items-center gap-3 shadow-[0_4px_12px_rgba(217,119,6,0.08)]">
+          <div class="relative w-13 h-13 sm:w-14 sm:h-14 shrink-0 rounded-xl bg-gradient-to-br from-amber-100/90 via-yellow-100 to-amber-200/70 flex items-center justify-center p-1.5 border border-amber-400/50 shadow-inner overflow-hidden">
+            <svg viewBox="0 0 64 64" fill="none" class="w-full h-full drop-shadow-sm">
+              <circle cx="32" cy="32" r="28" fill="#FEF3C7" fill-opacity="0.6"/>
+              
+              <path d="M16 46 C14 43 14 39 17 38 C20 37 22 41 20 44 Z" fill="#F59E0B" opacity="0.85"/>
+              <path d="M48 46 C50 43 50 39 47 38 C44 37 42 41 44 44 Z" fill="#F59E0B" opacity="0.85"/>
+              <circle cx="21" cy="46" r="2" fill="#D97706"/>
+              <circle cx="43" cy="46" r="2" fill="#D97706"/>
+              
+              <path d="M18 36 C18 24 23 15 32 15 C41 15 46 24 46 36 Z" fill="#FBBF24"/>
+              <path d="M23 35 C23 26 27 18 32 18 C37 18 41 26 41 35 Z" fill="#FDE68A"/>
+              <path d="M28 23 Q32 20 36 23" stroke="#D97706" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M25 28 Q32 25 39 28" stroke="#D97706" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="32" cy="16" r="1.5" fill="#B45309"/>
+              <circle cx="28" cy="21" r="1" fill="#D97706"/>
+              <circle cx="36" cy="22" r="1.2" fill="#D97706"/>
+              <circle cx="33" cy="27" r="1.3" fill="#D97706"/>
+
+              <path d="M14 35 C14 47 22 52 32 52 C42 52 50 47 50 35 Z" fill="url(#brassGrad)"/>
+              
+              <ellipse cx="32" cy="35" rx="18.5" ry="4" fill="#B45309"/>
+              <ellipse cx="32" cy="34.5" rx="18.5" ry="3.5" fill="#D97706"/>
+              <ellipse cx="32" cy="34" rx="17" ry="2.6" fill="#F59E0B"/>
+
+              <path d="M24 51 L23 54 C23 54.5 25 55 32 55 C39 55 41 54.5 41 54 L40 51 Z" fill="#B45309"/>
+              
+              <circle cx="15" cy="40" r="1.2" fill="#F59E0B"/>
+              <circle cx="49" cy="40" r="1.2" fill="#F59E0B"/>
+              <circle cx="32" cy="56" r="1" fill="#F59E0B"/>
+
+              <defs>
+                <linearGradient id="brassGrad" x1="14" y1="35" x2="50" y2="52" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#F59E0B"/>
+                  <stop offset="0.4" stop-color="#D97706"/>
+                  <stop offset="0.8" stop-color="#92400E"/>
+                  <stop offset="1" stop-color="#78350F"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between">
+              <span class="text-[8.5px] font-serifDisplay font-bold text-amber-700 tracking-wider">SUNDAY, NOV 22</span>
+              <button 
+                onclick="addToCalendar('Hemalatha & Bharath - Haldi', 'Join us for our joyous Haldi in Puducherry.', 'Puducherry', '20261122T043000Z', '20261122T083000Z')" 
+                class="text-[9px] font-bold text-amber-800 hover:text-terracotta active:scale-95 transition-all">
+                + Calendar
+              </button>
+            </div>
+            <h4 class="font-serifProse italic text-base font-bold text-charcoalBrown leading-tight">Haldi</h4>
+            <p class="text-[10px] text-stone-600 truncate">Vibrant turmeric blessings & celebrations • Puducherry</p>
+          </div>
+        </div>
+
+        <!-- 2. NALUGU -->
+        <div class="bg-white/95 p-2.5 rounded-2xl border border-antiqueGold/30 flex items-center gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.03)]">
+          <div class="relative w-13 h-13 sm:w-14 sm:h-14 shrink-0 rounded-xl bg-gradient-to-br from-warmSand/80 via-goldPale/50 to-white flex items-center justify-center p-0.5 border border-antiqueGold/30 overflow-hidden">
             <img 
               src="https://lh3.googleusercontent.com/d/1QAnmKe4J7Vec-FZgKhWZX7OIQnwvlwrg" 
               alt="Nalugu Chariot"
@@ -494,21 +532,21 @@
 
           <div class="flex-1 min-w-0">
             <div class="flex items-center justify-between">
-              <span class="text-[9px] font-serifDisplay font-bold text-terracotta tracking-wider">WEDNESDAY, NOV 25</span>
+              <span class="text-[8.5px] font-serifDisplay font-bold text-terracotta tracking-wider">WEDNESDAY, NOV 25</span>
               <button 
-                onclick="addToCalendar('Hemalatha & Bharath - Nalugu Ceremony', 'Join us for our Nalugu ceremony in Puducherry.', 'Puducherry', '20261125T043000Z', '20261125T073000Z')" 
+                onclick="addToCalendar('Hemalatha & Bharath - Nalugu', 'Join us for our Nalugu in Puducherry.', 'Puducherry', '20261125T043000Z', '20261125T073000Z')" 
                 class="text-[9px] font-semibold text-antiqueGold hover:text-terracotta active:scale-95 transition-all">
                 + Calendar
               </button>
             </div>
-            <h4 class="font-serifProse italic text-base font-bold text-charcoalBrown leading-tight">Nalugu Ceremony</h4>
+            <h4 class="font-serifProse italic text-base font-bold text-charcoalBrown leading-tight">Nalugu</h4>
             <p class="text-[10px] text-stone-500 truncate">Joyful procession & turmeric ritual in Puducherry</p>
           </div>
         </div>
 
-        <!-- 2. RECEPTION: STAGE STICKER -->
-        <div class="bg-white/95 p-2.5 sm:p-3 rounded-2xl border border-antiqueGold/30 flex items-center gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.03)]">
-          <div class="relative w-14 h-14 shrink-0 rounded-xl bg-gradient-to-br from-warmSand/80 via-goldPale/50 to-white flex items-center justify-center p-0.5 border border-antiqueGold/30 overflow-hidden">
+        <!-- 3. RECEPTION -->
+        <div class="bg-white/95 p-2.5 rounded-2xl border border-antiqueGold/30 flex items-center gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.03)]">
+          <div class="relative w-13 h-13 sm:w-14 sm:h-14 shrink-0 rounded-xl bg-gradient-to-br from-warmSand/80 via-goldPale/50 to-white flex items-center justify-center p-0.5 border border-antiqueGold/30 overflow-hidden">
             <img 
               src="https://lh3.googleusercontent.com/d/1LglwR_KHM62675n8XOHpDMyyQfJqrUZt" 
               alt="Reception Stage"
@@ -520,7 +558,7 @@
 
           <div class="flex-1 min-w-0">
             <div class="flex items-center justify-between">
-              <span class="text-[9px] font-serifDisplay font-bold text-terracotta tracking-wider">FRIDAY, NOV 27 • 6:00 PM</span>
+              <span class="text-[8.5px] font-serifDisplay font-bold text-terracotta tracking-wider">FRIDAY, NOV 27 • 6:00 PM</span>
               <button 
                 onclick="addToCalendar('Hemalatha & Bharath - Wedding Reception', 'Wedding Reception at Sri Ranga Weddings & Conventions', 'Sri Ranga Weddings & Conventions', '20261127T123000Z', '20261127T163000Z')" 
                 class="text-[9px] font-semibold text-antiqueGold hover:text-terracotta active:scale-95 transition-all">
@@ -532,9 +570,9 @@
           </div>
         </div>
 
-        <!-- 3. DINNER: BANANA LEAF FOOD STICKER -->
-        <div class="bg-white/95 p-2.5 sm:p-3 rounded-2xl border border-antiqueGold/30 flex items-center gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.03)]">
-          <div class="relative w-14 h-14 shrink-0 rounded-xl bg-gradient-to-br from-warmSand/80 via-goldPale/50 to-white flex items-center justify-center p-0.5 border border-antiqueGold/30 overflow-hidden">
+        <!-- 4. DINNER -->
+        <div class="bg-white/95 p-2.5 rounded-2xl border border-antiqueGold/30 flex items-center gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.03)]">
+          <div class="relative w-13 h-13 sm:w-14 sm:h-14 shrink-0 rounded-xl bg-gradient-to-br from-warmSand/80 via-goldPale/50 to-white flex items-center justify-center p-0.5 border border-antiqueGold/30 overflow-hidden">
             <img 
               src="https://lh3.googleusercontent.com/d/1sg61EGDC178G6fSgIJuADIS96zctE9xY" 
               alt="Dinner Food"
@@ -545,15 +583,15 @@
           </div>
 
           <div class="flex-1 min-w-0">
-            <span class="text-[9px] font-serifDisplay font-bold text-terracotta tracking-wider">FRIDAY, NOV 27 • 7:30 PM ONWARDS</span>
+            <span class="text-[8.5px] font-serifDisplay font-bold text-terracotta tracking-wider">FRIDAY, NOV 27 • 7:30 PM ONWARDS</span>
             <h4 class="font-serifProse italic text-base font-bold text-charcoalBrown leading-tight">Reception Dinner</h4>
             <p class="text-[10px] text-stone-500 truncate">Traditional festive South Indian feast</p>
           </div>
         </div>
 
-        <!-- 4. MUHURTHAM: TYING THAALI STICKER -->
-        <div class="bg-gradient-to-r from-warmSand/70 via-white to-goldPale/50 p-2.5 sm:p-3 rounded-2xl border-2 border-antiqueGold/60 flex items-center gap-3 shadow-md">
-          <div class="relative w-14 h-14 shrink-0 rounded-xl bg-gradient-to-br from-warmSand via-white to-goldPale flex items-center justify-center p-0.5 border border-antiqueGold/50 overflow-hidden">
+        <!-- 5. MUHURTHAM -->
+        <div class="bg-gradient-to-r from-warmSand/70 via-white to-goldPale/50 p-2.5 rounded-2xl border-2 border-antiqueGold/60 flex items-center gap-3 shadow-md">
+          <div class="relative w-13 h-13 sm:w-14 sm:h-14 shrink-0 rounded-xl bg-gradient-to-br from-warmSand via-white to-goldPale flex items-center justify-center p-0.5 border border-antiqueGold/50 overflow-hidden">
             <img 
               src="https://lh3.googleusercontent.com/d/1i1lfF1m8HvObAhHRvFjtJqF5YMg2IkXe" 
               alt="Kalyana Muhurtham"
@@ -565,7 +603,7 @@
 
           <div class="flex-1 min-w-0">
             <div class="flex items-center justify-between">
-              <span class="text-[9px] font-serifDisplay font-bold text-templeMaroon tracking-wider">FRIDAY, NOV 27 • 11:30 PM</span>
+              <span class="text-[8.5px] font-serifDisplay font-bold text-templeMaroon tracking-wider">FRIDAY, NOV 27 • 11:30 PM</span>
               <button 
                 onclick="addToCalendar('Hemalatha & Bharath - Kalyana Muhurtham', 'Sacred Kalyana Muhurtham & Mangalya Dharanam Ceremony', 'Sri Ranga Weddings & Conventions', '20261127T180000Z', '20261127T213000Z')" 
                 class="text-[9px] font-bold text-terracotta hover:text-antiqueGold active:scale-95 transition-all">
@@ -594,7 +632,6 @@
 
       <div class="max-w-sm mx-auto w-full my-auto space-y-3">
         
-        <!-- ROYAL ARCH FRAMED WEDDING HALL PHOTO -->
         <div class="relative w-full h-40 sm:h-44 mx-auto flex items-center justify-center">
           <div class="absolute inset-1 rounded-t-[100px] rounded-b-2xl bg-gradient-to-tr from-sandalwood/50 via-antiqueGold/30 to-terracotta/20 filter blur-lg opacity-80"></div>
           
@@ -614,10 +651,8 @@
           </div>
         </div>
 
-        <!-- Venue Navigation & Details Card -->
         <div class="bg-white/95 rounded-2xl p-3 sm:p-4 border border-antiqueGold/30 shadow-sm space-y-2.5">
           <div class="flex items-center gap-3 sm:gap-4">
-            <!-- QR Code for Google Maps -->
             <div class="w-20 h-20 sm:w-22 sm:h-22 p-1 rounded-xl border border-antiqueGold/30 bg-warmSand/20 shadow-inner flex flex-col items-center justify-center shrink-0">
               <img 
                 src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://maps.app.goo.gl/fhQRRuPYJm1gnnNf9" 
@@ -644,7 +679,6 @@
             </div>
           </div>
 
-          <!-- Personal Warm Welcome & Blessing From The Couple -->
           <div class="border-t border-antiqueGold/20 pt-2.5 text-center space-y-0.5">
             <h4 class="font-serifProse italic text-lg sm:text-xl text-templeMaroon font-normal">We Can't Wait to Celebrate With You</h4>
             <p class="font-serifDisplay text-[9px] uppercase tracking-[0.2em] text-antiqueGold font-bold">
@@ -658,19 +692,9 @@
 
       </div>
 
-      <!-- Action Buttons -->
-      <div class="space-y-1.5 max-w-sm mx-auto w-full pt-1">
-        <div class="flex items-center justify-center gap-2">
-          <button onclick="showerAkshatai()" class="flex-1 py-2 rounded-full bg-white border border-antiqueGold text-terracotta font-serifDisplay text-[10px] font-bold tracking-wider shadow-sm active:scale-95 transition-all">
-            🌸 Bless Us (அக்ஷதை)
-          </button>
-
-          <button onclick="shareInviteWhatsApp()" class="flex-1 py-2 rounded-full bg-[#25D366] text-white text-[10px] font-semibold tracking-wider shadow-sm active:scale-95 transition-all">
-            Share Invite
-          </button>
-        </div>
-
-        <p class="text-[8px] uppercase font-serifDisplay tracking-[0.25em] text-stone-400 text-center">
+      <!-- Footer Tagline -->
+      <div class="pt-2 text-center">
+        <p class="text-[9px] uppercase font-serifDisplay tracking-[0.28em] text-antiqueGold font-semibold">
           #HemalathaWedsBharath • 2026
         </p>
       </div>
@@ -687,9 +711,8 @@
     const scrollContainer = document.getElementById('scrollContainer');
     
     let hasStarted = false;
-    let isUserInitiatedPlay = false; // Tracks if user has unlocked audio
+    let isUserInitiatedPlay = false;
 
-    // Start audio specifically at 0:24
     function playFromTimestamp() {
       if (!bgMusic) return;
 
@@ -713,15 +736,12 @@
       });
     }
 
-    // 1. TAB VISIBILITY SYNC: Pause when tab is inactive, resume when active
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
-        // Tab minimized, user switched apps or opened another tab
         if (!bgMusic.paused) {
           bgMusic.pause();
         }
       } else {
-        // User came back to this tab
         if (isUserInitiatedPlay) {
           bgMusic.play().then(() => {
             if (audioLabel) audioLabel.textContent = 'Pause';
@@ -731,7 +751,6 @@
       }
     });
 
-    // Window focus/blur backup (covers older mobile WebViews)
     window.addEventListener('blur', () => {
       if (!bgMusic.paused) {
         bgMusic.pause();
@@ -743,38 +762,32 @@
       }
     });
 
-    // 2. Floating Button Audio Toggle
     function toggleAudio() {
       if (bgMusic.paused) {
         playFromTimestamp();
       } else {
         bgMusic.pause();
-        isUserInitiatedPlay = false; // User manually paused it
+        isUserInitiatedPlay = false;
         if (audioLabel) audioLabel.textContent = 'Music';
         if (audioIcon) audioIcon.textContent = '🎵';
       }
     }
 
-    // 3. UNLOCK GATEFOLD & UNLOCK SCROLL
     function unfoldGatefoldInvitation() {
       const leftDoor = document.getElementById('leftDoor');
       const rightDoor = document.getElementById('rightDoor');
       const seal = document.getElementById('centerSeal');
 
-      // Hide seal and open doors
       seal.classList.add('scale-75', 'opacity-0', 'pointer-events-none');
       leftDoor.classList.add('open-left');
       rightDoor.classList.add('open-right');
 
-      // UNLOCK SCROLL CONTAINER
       scrollContainer.classList.remove('snap-container-locked');
       scrollContainer.classList.add('snap-container-unlocked');
       document.body.style.overflow = 'auto';
 
-      // Start music at 0:24
       playFromTimestamp();
 
-      // Smoothly navigate to the Groom's screen
       setTimeout(() => {
         document.getElementById('groomPage').scrollIntoView({ behavior: 'smooth' });
         showerAkshatai();
@@ -786,12 +799,11 @@
       showerAkshatai();
     }
 
-    // Date Reveal Dial Logic
     let holdTimer = null;
     let holdProgress = 0;
     const maxHold = 1200;
     const progressRing = document.getElementById('progressRing');
-    const circumference = 2 * Math.PI * 76; // 477.52
+    const circumference = 2 * Math.PI * 76;
 
     function startHold(e) {
       if (e) e.preventDefault();
@@ -840,7 +852,6 @@
       }, 300);
     }
 
-    // Live Wedding Countdown Timer (Target: Nov 27, 2026, 23:30:00 IST)
     let countdownInterval = null;
     function startCountdown() {
       const weddingDate = new Date("November 27, 2026 23:30:00 GMT+0530").getTime();
@@ -873,7 +884,6 @@
       countdownInterval = setInterval(updateTimer, 1000);
     }
 
-    // Smart Device Calendar Detector (Apple Calendar .ics vs Google Calendar)
     function addToCalendar(title, description, location, startISO, endISO) {
       const isApple = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent) && !window.MSStream;
 
@@ -916,12 +926,6 @@
         colors: ['#C59A3F', '#8B261D', '#F4ECE1', '#FFD700', '#5A0C13'],
         disableForReducedMotion: true
       });
-    }
-
-    function shareInviteWhatsApp() {
-      const url = window.location.href;
-      const message = `We're getting married! 🌿%0A%0AWe warmly invite you to celebrate our wedding on *27th November 2026*.%0A%0ATap the link below to view our invitation, schedule, and venue details:%0A${encodeURIComponent(url)}%0A%0AWith lots of love,%0A*Hemalatha & Bharath Kumar*`;
-      window.open(`https://api.whatsapp.com/send?text=${message}`, '_blank');
     }
   </script>
 </body>
