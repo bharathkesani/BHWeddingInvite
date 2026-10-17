@@ -75,8 +75,8 @@
     }
 
     .sticker-blend {
-      mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 82%);
-      -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 58%, rgba(0,0,0,0) 82%);
+      mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 85%);
+      -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 85%);
     }
 
     .perspective-container {
@@ -315,7 +315,7 @@
           <div class="relative p-3.5 sm:p-4 rounded-2xl bg-[#FFFDF9]/90 border border-antiqueGold/35 shadow-sm text-center">
             <span class="absolute -top-3 left-4 font-serifProse text-3xl text-antiqueGold leading-none select-none">“</span>
             <p class="font-serifProse italic text-base sm:text-lg text-[#3E3030] font-normal leading-relaxed">
-              Marriage is about walking together as equals - anchored in deep friendship, growing side-by-side, and celebrating every small moment with laughter and purpose.
+              Marriage is about walking together as equals—anchored in deep friendship, growing side-by-side, and celebrating every small moment with laughter and purpose.
             </p>
             <span class="absolute -bottom-4 right-4 font-serifProse text-3xl text-antiqueGold leading-none select-none">”</span>
           </div>
@@ -360,7 +360,7 @@
           <div class="relative p-3.5 sm:p-4 rounded-2xl bg-[#FFFDF9]/90 border border-antiqueGold/35 shadow-sm text-center">
             <span class="absolute -top-3 left-4 font-serifProse text-3xl text-antiqueGold leading-none select-none">“</span>
             <p class="font-serifProse italic text-base sm:text-lg text-[#3E3030] font-normal leading-relaxed">
-              Marriage is finding home in another soul - a sacred space of trust, mutual respect, shared dreams, and embracing life’s beautiful adventure hand-in-hand.
+              Marriage is finding home in another soul—a sacred space of trust, mutual respect, shared dreams, and embracing life’s beautiful adventure hand-in-hand.
             </p>
             <span class="absolute -bottom-4 right-4 font-serifProse text-3xl text-antiqueGold leading-none select-none">”</span>
           </div>
@@ -450,174 +450,122 @@
       </div>
     </section>
 
-    <!-- ==================== SCREEN 5: AGENDA WITH HALDI + ALL EVENTS ==================== -->
-    <section id="agendaPage" class="snap-page relative w-full flex flex-col justify-between p-4 sm:p-6 py-5 sm:py-7 bg-[#FAF6F0] border-t border-antiqueGold/15">
+    <!-- ==================== SCREEN 5: AGENDA (ROBUST COMPACT LAYOUT) ==================== -->
+    <section id="agendaPage" class="snap-page relative w-full h-full flex flex-col justify-between p-4 sm:p-6 py-6 bg-[#FAF6F0] border-t border-antiqueGold/15">
       
-      <div class="text-center space-y-0.5">
+      <div class="text-center space-y-0.5 shrink-0 pt-2">
         <span class="text-[9px] font-serifDisplay uppercase tracking-[0.3em] text-antiqueGold font-bold">Event Schedule</span>
         <h3 class="font-serifProse italic text-2xl text-templeMaroon font-normal">Our Celebrations</h3>
       </div>
 
-      <!-- Events List -->
-      <div class="space-y-2 max-w-sm mx-auto w-full my-auto overflow-y-auto max-h-[76vh] pr-0.5">
+      <!-- Compact 5-Event Stack (Fits entirely without horizontal overflow) -->
+      <div class="space-y-2 max-w-sm mx-auto w-full my-auto">
         
         <!-- 1. HALDI -->
-        <div class="bg-gradient-to-r from-amber-50/90 via-white to-yellow-50/70 p-2.5 rounded-2xl border border-amber-300/80 flex items-center gap-3 shadow-[0_4px_12px_rgba(217,119,6,0.08)]">
-          <div class="relative w-13 h-13 sm:w-14 sm:h-14 shrink-0 rounded-xl bg-gradient-to-br from-amber-100/90 via-yellow-100 to-amber-200/70 flex items-center justify-center p-1.5 border border-amber-400/50 shadow-inner overflow-hidden">
-            <svg viewBox="0 0 64 64" fill="none" class="w-full h-full drop-shadow-sm">
-              <circle cx="32" cy="32" r="28" fill="#FEF3C7" fill-opacity="0.6"/>
-              
-              <path d="M16 46 C14 43 14 39 17 38 C20 37 22 41 20 44 Z" fill="#F59E0B" opacity="0.85"/>
-              <path d="M48 46 C50 43 50 39 47 38 C44 37 42 41 44 44 Z" fill="#F59E0B" opacity="0.85"/>
-              <circle cx="21" cy="46" r="2" fill="#D97706"/>
-              <circle cx="43" cy="46" r="2" fill="#D97706"/>
-              
+        <div class="bg-white/95 p-2 rounded-2xl border border-antiqueGold/30 flex items-center gap-3 shadow-sm">
+          <div class="w-12 h-12 min-w-[48px] max-w-[48px] rounded-xl bg-gradient-to-br from-amber-100 to-amber-200/80 flex items-center justify-center p-1 border border-amber-400/40 shrink-0">
+            <svg viewBox="0 0 64 64" fill="none" class="w-full h-full">
               <path d="M18 36 C18 24 23 15 32 15 C41 15 46 24 46 36 Z" fill="#FBBF24"/>
               <path d="M23 35 C23 26 27 18 32 18 C37 18 41 26 41 35 Z" fill="#FDE68A"/>
-              <path d="M28 23 Q32 20 36 23" stroke="#D97706" stroke-width="1.2" stroke-linecap="round"/>
-              <path d="M25 28 Q32 25 39 28" stroke="#D97706" stroke-width="1.2" stroke-linecap="round"/>
-              <circle cx="32" cy="16" r="1.5" fill="#B45309"/>
-              <circle cx="28" cy="21" r="1" fill="#D97706"/>
-              <circle cx="36" cy="22" r="1.2" fill="#D97706"/>
-              <circle cx="33" cy="27" r="1.3" fill="#D97706"/>
-
-              <path d="M14 35 C14 47 22 52 32 52 C42 52 50 47 50 35 Z" fill="url(#brassGrad)"/>
-              
+              <path d="M14 35 C14 47 22 52 32 52 C42 52 50 47 50 35 Z" fill="#D97706"/>
               <ellipse cx="32" cy="35" rx="18.5" ry="4" fill="#B45309"/>
-              <ellipse cx="32" cy="34.5" rx="18.5" ry="3.5" fill="#D97706"/>
               <ellipse cx="32" cy="34" rx="17" ry="2.6" fill="#F59E0B"/>
-
-              <path d="M24 51 L23 54 C23 54.5 25 55 32 55 C39 55 41 54.5 41 54 L40 51 Z" fill="#B45309"/>
-              
-              <circle cx="15" cy="40" r="1.2" fill="#F59E0B"/>
-              <circle cx="49" cy="40" r="1.2" fill="#F59E0B"/>
-              <circle cx="32" cy="56" r="1" fill="#F59E0B"/>
-
-              <defs>
-                <linearGradient id="brassGrad" x1="14" y1="35" x2="50" y2="52" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#F59E0B"/>
-                  <stop offset="0.4" stop-color="#D97706"/>
-                  <stop offset="0.8" stop-color="#92400E"/>
-                  <stop offset="1" stop-color="#78350F"/>
-                </linearGradient>
-              </defs>
             </svg>
           </div>
-
-          <div class="flex-1 min-w-0">
+          <div class="flex-1 min-w-0 pr-1">
             <div class="flex items-center justify-between">
-              <span class="text-[8.5px] font-serifDisplay font-bold text-amber-700 tracking-wider">SUNDAY, NOV 22</span>
-              <button 
-                onclick="addToCalendar('Hemalatha & Bharath - Haldi', 'Join us for our joyous Haldi in Puducherry.', 'Puducherry', '20261122T043000Z', '20261122T083000Z')" 
-                class="text-[9px] font-bold text-amber-800 hover:text-terracotta active:scale-95 transition-all">
-                + Calendar
-              </button>
+              <span class="text-[8.5px] font-serifDisplay font-bold text-amber-700 tracking-wider uppercase">Sunday, Nov 22</span>
+              <button onclick="addToCalendar('Hemalatha & Bharath - Haldi', 'Join us for our Haldi in Puducherry.', 'Puducherry', '20261122T043000Z', '20261122T083000Z')" class="text-[8.5px] font-bold text-amber-800 hover:text-terracotta active:scale-95 transition-all">+ Calendar</button>
             </div>
             <h4 class="font-serifProse italic text-base font-bold text-charcoalBrown leading-tight">Haldi</h4>
-            <p class="text-[10px] text-stone-600 truncate">Vibrant turmeric blessings & celebrations • Puducherry</p>
+            <p class="text-[9.5px] text-stone-500 truncate">Vibrant turmeric blessings • Puducherry</p>
           </div>
         </div>
 
         <!-- 2. NALUGU -->
-        <div class="bg-white/95 p-2.5 rounded-2xl border border-antiqueGold/30 flex items-center gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.03)]">
-          <div class="relative w-13 h-13 sm:w-14 sm:h-14 shrink-0 rounded-xl bg-gradient-to-br from-warmSand/80 via-goldPale/50 to-white flex items-center justify-center p-0.5 border border-antiqueGold/30 overflow-hidden">
+        <div class="bg-white/95 p-2 rounded-2xl border border-antiqueGold/30 flex items-center gap-3 shadow-sm">
+          <div class="w-12 h-12 min-w-[48px] max-w-[48px] rounded-xl bg-warmSand/60 flex items-center justify-center p-1 border border-antiqueGold/30 shrink-0 overflow-hidden">
             <img 
               src="https://lh3.googleusercontent.com/d/1QAnmKe4J7Vec-FZgKhWZX7OIQnwvlwrg" 
-              alt="Nalugu Chariot"
+              alt="Nalugu"
               referrerpolicy="no-referrer"
               onerror="this.onerror=null; this.src='https://drive.google.com/uc?export=view&id=1QAnmKe4J7Vec-FZgKhWZX7OIQnwvlwrg';"
-              class="sticker-blend w-full h-full object-contain filter contrast-[1.04]"
+              class="w-full h-full object-contain filter contrast-[1.05]"
             />
           </div>
-
-          <div class="flex-1 min-w-0">
+          <div class="flex-1 min-w-0 pr-1">
             <div class="flex items-center justify-between">
-              <span class="text-[8.5px] font-serifDisplay font-bold text-terracotta tracking-wider">WEDNESDAY, NOV 25</span>
-              <button 
-                onclick="addToCalendar('Hemalatha & Bharath - Nalugu', 'Join us for our Nalugu in Puducherry.', 'Puducherry', '20261125T043000Z', '20261125T073000Z')" 
-                class="text-[9px] font-semibold text-antiqueGold hover:text-terracotta active:scale-95 transition-all">
-                + Calendar
-              </button>
+              <span class="text-[8.5px] font-serifDisplay font-bold text-terracotta tracking-wider uppercase">Wednesday, Nov 25</span>
+              <button onclick="addToCalendar('Hemalatha & Bharath - Nalugu', 'Join us for our Nalugu in Puducherry.', 'Puducherry', '20261125T043000Z', '20261125T073000Z')" class="text-[8.5px] font-semibold text-antiqueGold hover:text-terracotta active:scale-95 transition-all">+ Calendar</button>
             </div>
             <h4 class="font-serifProse italic text-base font-bold text-charcoalBrown leading-tight">Nalugu</h4>
-            <p class="text-[10px] text-stone-500 truncate">Joyful procession & turmeric ritual in Puducherry</p>
+            <p class="text-[9.5px] text-stone-500 truncate">Joyful traditional ritual • Puducherry</p>
           </div>
         </div>
 
         <!-- 3. RECEPTION -->
-        <div class="bg-white/95 p-2.5 rounded-2xl border border-antiqueGold/30 flex items-center gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.03)]">
-          <div class="relative w-13 h-13 sm:w-14 sm:h-14 shrink-0 rounded-xl bg-gradient-to-br from-warmSand/80 via-goldPale/50 to-white flex items-center justify-center p-0.5 border border-antiqueGold/30 overflow-hidden">
+        <div class="bg-white/95 p-2 rounded-2xl border border-antiqueGold/30 flex items-center gap-3 shadow-sm">
+          <div class="w-12 h-12 min-w-[48px] max-w-[48px] rounded-xl bg-warmSand/60 flex items-center justify-center p-1 border border-antiqueGold/30 shrink-0 overflow-hidden">
             <img 
               src="https://lh3.googleusercontent.com/d/1LglwR_KHM62675n8XOHpDMyyQfJqrUZt" 
-              alt="Reception Stage"
+              alt="Reception"
               referrerpolicy="no-referrer"
               onerror="this.onerror=null; this.src='https://drive.google.com/uc?export=view&id=1LglwR_KHM62675n8XOHpDMyyQfJqrUZt';"
-              class="sticker-blend w-full h-full object-contain filter contrast-[1.04]"
+              class="w-full h-full object-contain filter contrast-[1.05]"
             />
           </div>
-
-          <div class="flex-1 min-w-0">
+          <div class="flex-1 min-w-0 pr-1">
             <div class="flex items-center justify-between">
-              <span class="text-[8.5px] font-serifDisplay font-bold text-terracotta tracking-wider">FRIDAY, NOV 27 • 6:00 PM</span>
-              <button 
-                onclick="addToCalendar('Hemalatha & Bharath - Wedding Reception', 'Wedding Reception at Sri Ranga Weddings & Conventions', 'Sri Ranga Weddings & Conventions', '20261127T123000Z', '20261127T163000Z')" 
-                class="text-[9px] font-semibold text-antiqueGold hover:text-terracotta active:scale-95 transition-all">
-                + Calendar
-              </button>
+              <span class="text-[8.5px] font-serifDisplay font-bold text-terracotta tracking-wider uppercase">Friday, Nov 27 • 6:00 PM</span>
+              <button onclick="addToCalendar('Hemalatha & Bharath - Wedding Reception', 'Wedding Reception at Sri Ranga Weddings & Conventions', 'Sri Ranga Weddings & Conventions', '20261127T123000Z', '20261127T163000Z')" class="text-[8.5px] font-semibold text-antiqueGold hover:text-terracotta active:scale-95 transition-all">+ Calendar</button>
             </div>
             <h4 class="font-serifProse italic text-base font-bold text-charcoalBrown leading-tight">Grand Reception</h4>
-            <p class="text-[10px] text-stone-500 truncate">Sri Ranga Weddings & Conventions</p>
+            <p class="text-[9.5px] text-stone-500 truncate">Sri Ranga Weddings & Conventions</p>
           </div>
         </div>
 
         <!-- 4. DINNER -->
-        <div class="bg-white/95 p-2.5 rounded-2xl border border-antiqueGold/30 flex items-center gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.03)]">
-          <div class="relative w-13 h-13 sm:w-14 sm:h-14 shrink-0 rounded-xl bg-gradient-to-br from-warmSand/80 via-goldPale/50 to-white flex items-center justify-center p-0.5 border border-antiqueGold/30 overflow-hidden">
+        <div class="bg-white/95 p-2 rounded-2xl border border-antiqueGold/30 flex items-center gap-3 shadow-sm">
+          <div class="w-12 h-12 min-w-[48px] max-w-[48px] rounded-xl bg-warmSand/60 flex items-center justify-center p-1 border border-antiqueGold/30 shrink-0 overflow-hidden">
             <img 
               src="https://lh3.googleusercontent.com/d/1sg61EGDC178G6fSgIJuADIS96zctE9xY" 
-              alt="Dinner Food"
+              alt="Dinner"
               referrerpolicy="no-referrer"
               onerror="this.onerror=null; this.src='https://drive.google.com/uc?export=view&id=1sg61EGDC178G6fSgIJuADIS96zctE9xY';"
-              class="sticker-blend w-full h-full object-contain filter contrast-[1.04]"
+              class="w-full h-full object-contain filter contrast-[1.05]"
             />
           </div>
-
-          <div class="flex-1 min-w-0">
-            <span class="text-[8.5px] font-serifDisplay font-bold text-terracotta tracking-wider">FRIDAY, NOV 27 • 7:30 PM ONWARDS</span>
+          <div class="flex-1 min-w-0 pr-1">
+            <span class="text-[8.5px] font-serifDisplay font-bold text-terracotta tracking-wider uppercase block">Friday, Nov 27 • 7:30 PM</span>
             <h4 class="font-serifProse italic text-base font-bold text-charcoalBrown leading-tight">Reception Dinner</h4>
-            <p class="text-[10px] text-stone-500 truncate">Traditional festive South Indian feast</p>
+            <p class="text-[9.5px] text-stone-500 truncate">Traditional festive South Indian feast</p>
           </div>
         </div>
 
         <!-- 5. MUHURTHAM -->
-        <div class="bg-gradient-to-r from-warmSand/70 via-white to-goldPale/50 p-2.5 rounded-2xl border-2 border-antiqueGold/60 flex items-center gap-3 shadow-md">
-          <div class="relative w-13 h-13 sm:w-14 sm:h-14 shrink-0 rounded-xl bg-gradient-to-br from-warmSand via-white to-goldPale flex items-center justify-center p-0.5 border border-antiqueGold/50 overflow-hidden">
+        <div class="bg-gradient-to-r from-warmSand/80 via-white to-goldPale/60 p-2 rounded-2xl border-2 border-antiqueGold/60 flex items-center gap-3 shadow-md">
+          <div class="w-12 h-12 min-w-[48px] max-w-[48px] rounded-xl bg-white flex items-center justify-center p-1 border border-antiqueGold/50 shrink-0 overflow-hidden">
             <img 
               src="https://lh3.googleusercontent.com/d/1i1lfF1m8HvObAhHRvFjtJqF5YMg2IkXe" 
-              alt="Kalyana Muhurtham"
+              alt="Muhurtham"
               referrerpolicy="no-referrer"
               onerror="this.onerror=null; this.src='https://drive.google.com/uc?export=view&id=1i1lfF1m8HvObAhHRvFjtJqF5YMg2IkXe';"
-              class="sticker-blend w-full h-full object-contain filter contrast-[1.04]"
+              class="w-full h-full object-contain filter contrast-[1.05]"
             />
           </div>
-
-          <div class="flex-1 min-w-0">
+          <div class="flex-1 min-w-0 pr-1">
             <div class="flex items-center justify-between">
-              <span class="text-[8.5px] font-serifDisplay font-bold text-templeMaroon tracking-wider">FRIDAY, NOV 27 • 11:30 PM</span>
-              <button 
-                onclick="addToCalendar('Hemalatha & Bharath - Kalyana Muhurtham', 'Sacred Kalyana Muhurtham & Mangalya Dharanam Ceremony', 'Sri Ranga Weddings & Conventions', '20261127T180000Z', '20261127T213000Z')" 
-                class="text-[9px] font-bold text-terracotta hover:text-antiqueGold active:scale-95 transition-all">
-                + Calendar
-              </button>
+              <span class="text-[8.5px] font-serifDisplay font-bold text-templeMaroon tracking-wider uppercase">Friday, Nov 27 • 11:30 PM</span>
+              <button onclick="addToCalendar('Hemalatha & Bharath - Kalyana Muhurtham', 'Sacred Kalyana Muhurtham Ceremony', 'Sri Ranga Weddings & Conventions', '20261127T180000Z', '20261127T213000Z')" class="text-[8.5px] font-bold text-terracotta hover:text-antiqueGold active:scale-95 transition-all">+ Calendar</button>
             </div>
             <h4 class="font-serifProse italic text-base font-bold text-templeMaroon leading-tight">Kalyana Muhurtham</h4>
-            <p class="text-[10px] text-stone-600 truncate">Mangalya Dharanam & Saptapadi</p>
+            <p class="text-[9.5px] text-stone-600 truncate">Mangalya Dharanam & Saptapadi</p>
           </div>
         </div>
 
       </div>
 
-      <div class="pt-1 text-center">
+      <div class="pt-1 text-center shrink-0 pb-1">
         <span class="text-[9px] font-serifDisplay uppercase tracking-widest text-antiqueGold/70">Swipe Up for Venue & Route ↓</span>
       </div>
     </section>
